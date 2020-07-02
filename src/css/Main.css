@@ -1,0 +1,19 @@
+.slide {
+    margin-bottom: 44px;
+    border: 1px solid red;
+    height: 450px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+.app {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.item {
+    border: #dbdee3 1px solid;
+}

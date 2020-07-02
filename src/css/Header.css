@@ -1,0 +1,30 @@
+#logo {
+    float: left;
+    height: 64px;
+    width: 64px;
+    background-color: black;
+}
+
+#header {
+    display: block;
+    height: 64px;
+    background-color: burlywood;
+    border-top: 24px solid white;
+    border-bottom: 24px solid white;
+}
+
+#nav {
+    margin-top: 10px;
+    margin-bottom: 20px;;
+    padding-left: 0px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black !important;
+    padding-left: 15px !important;
+    font-weight: 650 !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    text-decoration-line: underline;
+}
