@@ -1,0 +1,24 @@
+{
+  "name": "manga-web",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "cd backend && node server.js",
+    "client": "cd frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loankbt/manga-web.git"
+  },
+  "author": "kbt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loankbt/manga-web/issues"
+  },
+  "homepage": "https://github.com/loankbt/manga-web#readme"
+}
