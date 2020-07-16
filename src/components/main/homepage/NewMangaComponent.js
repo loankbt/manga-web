@@ -3,23 +3,52 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import '../../../css/Common.css'
 
-class NewMangaComponent extends Component {
+export default class NewMangaComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { mangaList: [] }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/manga/new')
+            .then(result => {
+                if (result.data.length > 0) {
+                    this.setState({
+                        mangaList: result.data
+                    })
+                }
+            })
+    }
+
     render() {
+        const mangaList = this.state.mangaList
+        const list = []
+
+        mangaList.forEach(manga => {
+            list.push(
+                <Col key={manga._id} lg={3}>
+                    <Link
+                        className="new-release"
+                        to={{
+                            pathname: "/manga/detail/" + manga.code,
+                            state: manga
+                        }}>
+                        <Image src={"http://localhost:5000/manga/" + manga.path} fluid />
+                        <span className="manga-title">{manga.name}</span>
+                    </Link>
+                </Col>
+            )
+        })
+
         return (
-            <section>
-                <Container>
-                    <h2>New Release</h2>
-                    <Row>
-                        <Col lg={3}><Image src="https://cdn.lezhin.com/v2/comics/5647579813380096/images/tall.webp?updated=1580716810634&width=277" alt="new-release" fluid/></Col>
-                        <Col lg={3}><Image src="https://cdn.lezhin.com/v2/comics/6246910982684672/images/tall.webp?updated=1580346158710&width=277" alt="new-release" fluid/></Col>
-                        <Col lg={3}><Image src="https://cdn.lezhin.com/v2/comics/5913498020282368/images/tall.webp?updated=1580176483294&width=277" alt="new-release" fluid/></Col>
-                        <Col lg={3}><Image src="https://cdn.lezhin.com/v2/comics/4722526976540672/images/tall.webp?updated=1579158676762&width=277" alt="new-release" fluid/></Col>
-                    </Row>
-                </Container>
-            </section>
+            <Container>
+                <h2 className="section-title">New Release</h2>
+                <Row>{list}</Row>
+            </Container>
         )
     }
 }
-
-export default NewMangaComponent

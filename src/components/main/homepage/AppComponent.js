@@ -12,7 +12,7 @@ class AppComponent extends Component {
                     <h2 className="app">Download Our Apps</h2>
                     <Row>
                         <Col lg={{ span: 4, offset: 2 }}>
-                            <a href="/" className>
+                            <a href="/">
                                 <Image
                                     className="item"
                                     src="//cdn.lezhin.com/files/assets/img/app_banner_desktop_android_en.png"
@@ -22,7 +22,7 @@ class AppComponent extends Component {
                             </a>
                         </Col>
                         <Col lg={{ span: 4 }}>
-                            <a href="/" className>
+                            <a href="/">
                                 <Image
                                     className="item"
                                     src="//cdn.lezhin.com/files/assets/img/app_banner_desktop_ios_en.png"

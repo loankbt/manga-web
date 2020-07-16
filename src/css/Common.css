@@ -1,4 +1,31 @@
+.container {
+    margin-bottom: 50px;
+}
 .demo {
     margin-left: 5%;
     margin-right: 5%;
+}
+.epList {
+    border-top: 1px solid #dee0e3;
+}
+.single-ep {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.new-release {
+    font-size: 20px;
+}
+.section-title {
+    font-size: 26px;
+    font-weight: 600;
+}
+.header {
+    font-weight: bold;
+}
+.single-title {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.manga-title {
+    font-weight: 600;
 }

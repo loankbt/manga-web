@@ -5,20 +5,19 @@ import ListMangaComponent from './ListMangaComponent'
 import AppComponent from './AppComponent'
 import FooterComponent from '../../footer/FooterComponent'
 
-class MainComponent extends Component {
+export default class MainComponent extends Component {
+    
     render() {
         return (
             <div>
                 <AsideComponent />
                 <NewMangaComponent />
-                <ListMangaComponent title="New Today"/>
-                <ListMangaComponent title="Romance"/>
-                <ListMangaComponent title="Fantasy"/>
+                <ListMangaComponent title="Romance" type="romance"/>
+                <ListMangaComponent title="Fantasy" type="fantasy"/>
+                <ListMangaComponent title="Action" type="action"/>
                 <AppComponent />
                 <FooterComponent />
             </div>
         )
     }
 }
-
-export default MainComponent

@@ -1,62 +1,59 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import '../../../css/Common.css'
 
-const ListMangaComponent = (props) => {
-    console.log(props)
-    return (
-        <section>
-            <Container>
-                <h2>{props.title}</h2>
-                <Row>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/4832433259675648/images/tall.webp?updated=1542610801787&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/5488055446405120/images/tall.webp?updated=1548658802697&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/5375516648931328/images/tall.webp?updated=1566891791334&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/6388453403787264/images/tall.webp?updated=1562662842735&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/5176816106733568/images/tall.webp?updated=1563344750810&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                    <Col lg={2}>
-                        <Image
-                            src="https://cdn.lezhin.com/v2/comics/6424429192282112/images/tall.webp?updated=1542610801787&width=177"
-                            alt="new-release"
-                            fluid
-                        />
-                    </Col>
-                </Row>
-            </Container>
-        </section>
-    )
+export default class ListMangaComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { mangaList: [] }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/manga/type/' + this.props.type)
+            .then(result => {
+                if (result.data.length > 0) {
+                    this.setState({
+                        mangaList: result.data
+                    })
+                }
+            })
+    }
+
+    render() {
+        const mangaList = this.state.mangaList
+        const list = []
+
+        const filtered = mangaList.filter((value, index, array) => {
+            return index < 4
+        })
+
+        filtered.forEach(manga => {
+            list.push(
+                <Col key={manga._id} lg={2}>
+                    <Link
+                        to={{
+                            pathname: "/manga/detail/" + manga.code,
+                            state: manga
+                        }}>
+                        <Image src={"http://localhost:5000/manga/" + manga.path} fluid />
+                        <span className="manga-title">{manga.name}</span>
+                    </Link>
+                </Col>
+            )
+        })
+
+        return (
+            <section>
+                <Container>
+                    <h2 className="section-title">{this.props.title}</h2>
+                    <Row>{list}</Row>
+                </Container>
+            </section>
+        )
+    }
 }
-
-export default ListMangaComponent

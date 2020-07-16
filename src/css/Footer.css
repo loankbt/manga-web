@@ -3,5 +3,13 @@ footer {
     background-color: #3a3a3a;
     color: #a3a3a3;
     padding-top: 64px;
-    padding-bottom: 157px;
+    padding-bottom: 40px;
+}
+.footer-item {
+    font-size: 14;
+    color: #a3a3a3;
+}
+.footer-item:hover {
+    color: #eee;
+    text-decoration: none;
 }
