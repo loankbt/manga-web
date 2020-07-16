@@ -19,6 +19,10 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successully!");
 })
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('../frontend/build'))
+}
+
 const mangaRouter = require('./routes/manga')
 const episodeRouter = require('./routes/episode')
 
