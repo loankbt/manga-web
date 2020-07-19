@@ -17,7 +17,7 @@ export default class MangaComponent extends Component {
                         state: manga
                     }}>
                         <Image
-                            src={"http://localhost:5000/manga/" + manga.path}
+                            src={"/manga/" + manga.path}
                             alt={manga.name}
                             fluid
                         />

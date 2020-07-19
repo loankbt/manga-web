@@ -10,7 +10,7 @@ export default class NewMangaComponent extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/manga/completed/')
+        axios.get('/manga/completed/')
             .then(response => {
                 if (response.data.length > 0) {
                     this.setState({

@@ -18,8 +18,8 @@ export default class DetailMangaComponent extends Component {
 
     componentDidMount() {
         Promise.all([
-            axios.get('http://localhost:5000/manga/detail/' + this.state.mangaCode),
-            axios.get('http://localhost:5000/episode/list/' + this.state.mangaCode)
+            axios.get('/manga/detail/' + this.state.mangaCode),
+            axios.get('/episode/list/' + this.state.mangaCode)
         ]).then(([result1, result2]) => {
             if (result1.data.length > 0 && result2.data.length > 0) {
                 this.setState({
@@ -39,7 +39,7 @@ export default class DetailMangaComponent extends Component {
         if (manga.length > 0) {
             mangaIntro = [
                 <Col lg={4} key={manga[0]._id}>
-                    <Image src={"http://localhost:5000/manga/" + manga[0].path} alt={manga[0].name} fluid />
+                    <Image src={"/manga/" + manga[0].path} alt={manga[0].name} fluid />
                     <h3 className="single-title">{manga[0].name}</h3>
                     <h5><span className="header">Creator: </span>{manga[0].author}</h5>
                     <h6><span className="header">Genre: </span>{manga[0].type.charAt(0).toUpperCase() + manga[0].type.slice(1)}</h6>
@@ -54,7 +54,7 @@ export default class DetailMangaComponent extends Component {
             items.push(
                 <Row className="single-ep" key={ep._id}>
                     <Col lg={2}>
-                        <Image src={"http://localhost:5000/episode/cover/" + ep.cover} alt={ep.name} fluid />
+                        <Image src={"/episode/cover/" + ep.cover} alt={ep.name} fluid />
                     </Col>
 
                     <Col>
