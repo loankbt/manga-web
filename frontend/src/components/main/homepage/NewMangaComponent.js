@@ -14,7 +14,7 @@ export default class NewMangaComponent extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/manga/new')
+        axios.get('/manga/new')
             .then(result => {
                 if (result.data.length > 0) {
                     this.setState({
@@ -37,7 +37,7 @@ export default class NewMangaComponent extends Component {
                             pathname: "/manga/detail/" + manga.code,
                             state: manga
                         }}>
-                        <Image src={"http://localhost:5000/manga/" + manga.path} fluid />
+                        <Image src={"/manga/" + manga.path} fluid />
                         <span className="manga-title">{manga.name}</span>
                     </Link>
                 </Col>
