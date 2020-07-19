@@ -13,7 +13,7 @@ class AsideComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 slide"
-                                src="http://localhost:5000/manga/banner/banner1.jpg"
+                                src="/manga/banner/banner1.jpg"
                                 alt="First slide"
                                 style={{ maxHeight: 448, maxWidth: 1160 }}
                             />
@@ -21,14 +21,14 @@ class AsideComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 slide"
-                                src="http://localhost:5000/manga/banner/banner2.jpg"
+                                src="/manga/banner/banner2.jpg"
                                 alt="Third slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 slide"
-                                src="http://localhost:5000/manga/banner/banner3.jpg"
+                                src="/manga/banner/banner3.jpg"
                                 alt="Third slide"
                             />
                         </Carousel.Item>
