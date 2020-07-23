@@ -3,15 +3,18 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
-import '../../../css/Common.css'
 import axios from 'axios'
+import '../../../css/Common.css'
+import HeaderComponent from '../../header/HeaderComponent'
+import TitleComponent from '../../header/TitleComponent'
+import { Link } from 'react-router-dom'
 
 export default class DetailMangaComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             mangaCode: this.props.match.params.mangaCode,
-            manga: {},
+            manga: { name: this.props.title },
             episodes: []
         }
     }
@@ -52,28 +55,39 @@ export default class DetailMangaComponent extends Component {
             const moment = require('moment')
 
             items.push(
-                <Row className="single-ep" key={ep._id}>
-                    <Col lg={2}>
-                        <Image src={"/episode/cover/" + ep.cover} alt={ep.name} fluid />
-                    </Col>
+                <Link to={{
+                    pathname: "/episode/" + manga[0].code + "/" + ep._id
+                }}
+                    key={ep._id}>
+                    <Row className="single-ep">
 
-                    <Col>
-                        <div>{ep.name}</div>
-                        <div><small>{moment(ep.createdAt).format('DD-MM-YYYY')}</small></div>
-                    </Col>
-                </Row>)
+                        <Col lg={2}>
+
+                            <Image src={"/episode/cover/" + ep.cover} alt={ep.name} fluid />
+                        </Col>
+
+                        <Col>
+                            <div>{ep.name}</div>
+                            <div><small>{moment(ep.createdAt).format('DD-MM-YYYY')}</small></div>
+                        </Col>
+                    </Row >
+                </Link>)
         })
 
         return (
-            <Container className="container">
-                <Row>
-                    {mangaIntro}
+            <div>
+                <TitleComponent title={manga.name} />
+                <HeaderComponent />
+                <Container className="container">
+                    <Row>
+                        {mangaIntro}
 
-                    <Col lg={8} className="epList">
-                        {items}
-                    </Col>
-                </Row>
-            </Container>
+                        <Col lg={8} className="epList">
+                            {items}
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }

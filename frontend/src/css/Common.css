@@ -29,3 +29,9 @@
 .manga-title {
     font-weight: 600;
 }
+.shown-image {
+    margin: auto;
+    display: block;
+    justify-content: center;
+    align-items: center
+}

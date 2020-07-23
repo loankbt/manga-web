@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
-import MangaComponent from './MangaComponent'
 import axios from 'axios'
+import HeaderComponent from '../../header/HeaderComponent'
+import MangaComponent from './MangaComponent'
+import TitleComponent from '../../header/TitleComponent'
 
 export default class OnGoingMangaComponent extends Component {
     constructor(props) {
@@ -22,11 +24,13 @@ export default class OnGoingMangaComponent extends Component {
 
     render() {
         return (
-            <section>
+            <div>
+                <TitleComponent title='On going manga' />
+                <HeaderComponent />
                 <Container>
-                    <MangaComponent mangas={this.state.mangas}/>
+                    <MangaComponent mangas={this.state.mangas} />
                 </Container>
-            </section>
+            </div>
         )
     }
 }

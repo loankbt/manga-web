@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 let Episode = require('../models/episode.model');
+let Image = require('../models/image.model')
 
 // // get all mangas
 // router.route('/').get((req, res) => {
@@ -34,6 +35,13 @@ router.route('/cover/:imageName').get((req, res) => {
 router.route('/list/:mangaCode').get((req, res) => {
     Episode.find({ "belongsTo": req.params.mangaCode })
         .then(manga => res.json(manga))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+// get images by episode
+router.route('/:epId').get((req, res) => {
+    Image.find({ "epId": req.params.epId }).sort({ 'order': 1 })
+        .then(imgList => res.json(imgList))
         .catch(err => res.status(400).json('Error: ' + err))
 })
 

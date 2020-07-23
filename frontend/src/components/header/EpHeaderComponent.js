@@ -6,23 +6,23 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from "react-router-dom"
+import { FaList } from 'react-icons/fa'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Item from 'react-bootstrap'
 
-class HeaderComponent extends Component {
+export default class EpHeaderComponent extends Component {
     render() {
         return (
-            <Container>
-                <Navbar id="nav">
+            <div>
+                <Navbar id='ep-header'>
                     <Navbar.Brand href="/">
-                        <img src={logo} alt="logo"></img>
+                        <Nav to='/' className='nav-link'><img src={logo} alt="logo"></img></Nav>
                     </Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Link to="/on-going" className="nav-link">On Going</Link>
-                        <Link to="/completed" className="nav-link">Completed</Link>
+                        <Nav className='nav-link'><Link to={'/manga/detail/' + this.props.mangaCode}><FaList /></Link></Nav>
                     </Nav>
                 </Navbar>
-            </Container>
+            </div>
         )
     }
 }
-
-export default HeaderComponent

@@ -25,9 +25,11 @@ if (process.env.NODE_ENV === 'production') {
 
 const mangaRouter = require('./routes/manga')
 const episodeRouter = require('./routes/episode')
+const imageRouter = require('./routes/image')
 
-app.use('/manga', mangaRouter);
+app.use('/manga', mangaRouter)
 app.use('/episode', episodeRouter)
+app.use('/image', imageRouter)
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

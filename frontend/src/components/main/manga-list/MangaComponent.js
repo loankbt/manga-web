@@ -14,7 +14,7 @@ export default class MangaComponent extends Component {
                 <Col lg={2} key={manga._id}>
                     <Link to={{
                         pathname: "/manga/detail/" + manga.code,
-                        state: manga
+                        title: manga.name
                     }}>
                         <Image
                             src={"/manga/" + manga.path}

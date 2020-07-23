@@ -1,27 +1,22 @@
-import React from 'react';
-// import logo from './logo.svg';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import './App.css';
-import BannerComponent from './components/banner/BannerComponent'
-import HeaderComponent from './components/header/HeaderComponent';
 import MainComponent from './components/main/homepage/MainComponent'
 import OnGoingMangaComponent from './components/main/manga-list/OnGoingMangaComponent'
 import CompletedMangaComponent from './components/main/manga-list/CompletedMangaComponent'
-import { BrowserRouter as Router, Route } from "react-router-dom"
 import DetailMangaComponent from './components/main/single-manga/DetailMangaComponent'
+import EpComponent from './components/main/single-manga/EpComponent';
 
-function App() {
-  return (
-    <div>
-      <Router>
-        <BannerComponent />
-        <HeaderComponent />
-        <Route exact path="/" component={MainComponent} />
-        <Route path="/on-going" component={OnGoingMangaComponent} />
-        <Route path="/completed" component={CompletedMangaComponent} />
-        <Route path="/manga/detail/:mangaCode" component={DetailMangaComponent} />
-      </Router>
-    </div>
-  )
+export default class App extends Component {
+  render() {
+    return (
+        <Router>
+          <Route exact path="/" component={MainComponent} />
+          <Route path="/on-going" component={OnGoingMangaComponent} />
+          <Route path="/completed" component={CompletedMangaComponent} />
+          <Route path="/manga/detail/:mangaCode" component={DetailMangaComponent} />
+          <Route path="/episode/:mangaCode/:epId" component={EpComponent} />
+        </Router>
+    )
+  }
 }
-
-export default App;
